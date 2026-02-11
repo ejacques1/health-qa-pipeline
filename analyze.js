@@ -11,11 +11,12 @@ const supabase = createClient(
 );
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
 });
 
 // Locked model version for reproducibility
-const OPENAI_MODEL = "gpt-4o-2024-08-06";
+const OPENAI_MODEL = "openai/gpt-4o-2024-08-06";
 
 // ============================================================================
 // READABILITY: Flesch-Kincaid (pure math, no AI)

@@ -16,7 +16,7 @@ const openai = new OpenAI({
 });
 
 // Locked model version for reproducibility
-const OPENAI_MODEL = "openai/gpt-4o-2024-08-06";
+const OPENAI_MODEL = "openai/gpt-5.2";
 
 // ============================================================================
 // READABILITY: Flesch-Kincaid (pure math, no AI)
@@ -126,8 +126,9 @@ module.exports = async function handler(req, res) {
 
     const responseText = completion.choices[0].message.content;
 
-    // 3. Score readability
-    const readability = analyzeReadability(responseText);
+    // 3. Score readability (strip URLs so they don't inflate grade level)
+    const cleanedText = responseText.replace(/https?:\/\/[^\s\)>\]"']+/g, "");
+    const readability = analyzeReadability(cleanedText);
 
     // 4. Extract source URLs
     const urls = extractUrls(responseText);

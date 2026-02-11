@@ -1,0 +1,13 @@
+{
+  "name": "health-qa-pipeline",
+  "version": "1.0.0",
+  "description": "Automated pipeline: sends health questions to ChatGPT, scores readability, classifies source org types",
+  "private": true,
+  "dependencies": {
+    "openai": "^4.52.0",
+    "@supabase/supabase-js": "^2.43.0",
+    "googleapis": "^140.0.0",
+    "cheerio": "^1.0.0",
+    "text-readability": "^1.0.5"
+  }
+}
